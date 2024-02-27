@@ -2,7 +2,6 @@ from flask import request, jsonify
 from app.models.models import TimerData, Record, UserData
 from app import app, db
 
-
 """
 TimerData endpoints
 Get -> Get TimerData for a specific id or all the timers present
@@ -43,8 +42,6 @@ def post_timer_data():
     db.session.commit()
 
     return jsonify({'message': 'Timer created successfully', 'id': str(new_timer.id)}), 201
-
-
 
 """
 Record endpoints
