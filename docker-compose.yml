@@ -1,0 +1,27 @@
+version: '3.8'
+
+services:
+  pomodoro:
+    image: basic_pomodoro:latest
+    ports:
+      - 5001:5000
+    environment:
+      POMODORO_HOST: 0.0.0.0
+      SQL_DB: sqlite:////data/pomodoro.db
+    volumes:
+      - "/Users/manasaivaturi/Desktop/Flask/demo/data:/data"
+      - "/Users/manasaivaturi/Desktop/Flask/demo/app:/dock_app/app"
+
+#volumes:
+#  data_vol:
+#    driver: local
+#    driver_opts:
+#      type: none
+#      device: /Users/manasaivaturi/Desktop/Flask/demo/data
+#      o: bind
+#  app_vol:
+#    driver: local
+#    driver_opts:
+#      type: none
+#      device: /Users/manasaivaturi/Desktop/Flask/demo/app
+#      o: bind
