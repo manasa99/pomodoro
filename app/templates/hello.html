@@ -4,27 +4,10 @@
     <title>Hello Template</title>
 </head>
 <body>
+{% if not name %}
+<h1>Hello, World!</h1>
+{% else %}
 <h1>Hello, {{ name }}!</h1>
+{% endif %}
 </body>
 </html>
-
-
-
-
-
-
-
-
-<!--<!DOCTYPE html>-->
-<!--<html>-->
-<!--<head>-->
-<!--    <title>{{ title }}</title>-->
-<!--</head>-->
-<!--<body>-->
-<!--{% if name == "a" %}-->
-<!--<h1>Hello, World!</h1>-->
-<!--{% else %}-->
-<!--<h1>Hello, {{ name }}!</h1>-->
-<!--{% endif %}-->
-<!--</body>-->
-<!--</html>-->
