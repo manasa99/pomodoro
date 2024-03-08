@@ -46,10 +46,4 @@ class Record(db.Model):
         }
 
 
-class UserData(db.Model):
-    id = db.Column(db.String(36), primary_key=True, default=gen_uuid)
-    name = db.Column(db.String(128), nullable=False)
-    link = db.Column(db.String(128), nullable=True)
 
-    timers = db.relationship('TimerData', backref='user', lazy=True)
-    records = db.relationship('Record', backref='user', lazy=True)
