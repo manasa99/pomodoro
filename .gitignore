@@ -1,8 +1,9 @@
 venv
 demo.iml
 migrations
-instance
 .idea
 data
+instance
 __pycache__/
 */__pycache__/
+
