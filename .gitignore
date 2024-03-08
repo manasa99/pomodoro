@@ -4,3 +4,4 @@ migrations
 instance
 .idea
 data
+**/__pycache__/
