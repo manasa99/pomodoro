@@ -2,11 +2,10 @@ import uuid
 import enum
 from datetime import datetime
 from app import db
-
+from sqlalchemy.orm import validates
 
 def gen_uuid():
     return str(uuid.uuid4())
-
 
 class Status(enum.Enum):
     running = 1
@@ -21,6 +20,12 @@ class TimerData(db.Model):
     isGlobal = db.Column(db.Boolean, default=True)
     id = db.Column(db.String(36), primary_key=True, default=gen_uuid)
     user_id = db.Column(db.String(36), default='admin', nullable=True)
+
+    @validates('time')
+    def validate_time(self, key, time):
+        if not (0 <= time <= 100):
+            raise ValueError("Time must be between 0 and 100.")
+        return time
 
 
 class Record(db.Model):
