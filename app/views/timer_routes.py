@@ -3,7 +3,6 @@ from app.models.models import TimerData, Record
 from app import app, db
 from app.forms.forms import *
 from app.views.timer_views import *
-import requests
 
 """
 TimerData endpoints
