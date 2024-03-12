@@ -14,7 +14,7 @@ migrate = Migrate(app, db)
 from app.views.timer_routes import *
 from app.views.timer_views import *
 from app.views.timer_bp import *
-from app.views.all_routes import *
+# from app.views.all_routes import *
 
 app.register_blueprint(timer_bp)
 # app.register_blueprint(timer_blueprint)
