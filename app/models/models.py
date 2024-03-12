@@ -49,6 +49,3 @@ class Record(db.Model):
             'status': self.status.name if self.status else None,  # Convert enum to string
             'user_id': self.user_id
         }
-
-
-
