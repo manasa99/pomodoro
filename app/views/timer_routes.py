@@ -1,5 +1,5 @@
 from flask import request,jsonify, render_template, redirect, url_for, Blueprint
-from app.models.models import TimerData, Record, UserData
+from app.models.models import TimerData, Record
 from app import app, db
 from app.forms.forms import *
 from app.views.timer_views import *
