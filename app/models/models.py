@@ -30,7 +30,7 @@ class Record(db.Model):
     end_time = db.Column(db.DateTime)
     completed = db.Column(db.Boolean, default=False)
     status = db.Column(db.Enum(Status))
-    user_id = db.Column(db.String(36), db.ForeignKey('user_data.id'))
+    user_id = db.Column(db.String(36))
 
     timers = db.relationship('TimerData', backref='record', lazy=True)
 
