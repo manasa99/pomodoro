@@ -20,7 +20,7 @@ class TimerData(db.Model):
     time = db.Column(db.Integer)
     isGlobal = db.Column(db.Boolean, default=True)
     id = db.Column(db.String(36), primary_key=True, default=gen_uuid)
-    user_id = db.Column(db.String(36), db.ForeignKey('user_data.id'), default='admin', nullable=True)
+    user_id = db.Column(db.String(36), default='admin', nullable=True)
 
 
 class Record(db.Model):
