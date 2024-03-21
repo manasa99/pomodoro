@@ -13,8 +13,35 @@ class Status(enum.Enum):
     completed = 3
     stopped = 4
 
+class TimestampMixin:
+    created_at = db.Column(db.DateTime, default=db.func.current_timestamp())
+    updated_at = db.Column(db.DateTime, default=db.func.current_timestamp(), onupdate=db.func.current_timestamp())
 
-class TimerData(db.Model):
+
+class CRUDMixin:
+    def save(self, commit=True):
+        db.session.add(self)
+        if commit:
+            db.session.commit()
+        return self
+
+    @classmethod
+    def get_by_id(cls, id):
+        return cls.query.get(id)
+
+    def update(self, commit=True, **kwargs):
+        for key, value in kwargs.items():
+            setattr(self, key, value)
+        if commit:
+            db.session.commit()
+        return self
+
+    def delete(self, commit=True):
+        db.session.delete(self)
+        if commit:
+            db.session.commit()
+
+class TimerData(CRUDMixin, db.Model):
     name = db.Column(db.String(128))
     time = db.Column(db.Integer)
     isGlobal = db.Column(db.Boolean, default=True)
@@ -26,6 +53,11 @@ class TimerData(db.Model):
         if not (0 <= time <= 100):
             raise ValueError("Time must be between 0 and 100.")
         return time
+
+class User(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    username = db.Column(db.String(50), unique=True, nullable=False)
+    password = db.Column(db.String(100), nullable=False)
 
 
 class Record(db.Model):

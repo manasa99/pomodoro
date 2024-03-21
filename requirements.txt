@@ -12,3 +12,7 @@ SQLAlchemy==2.0.25
 typing_extensions==4.9.0
 Werkzeug==3.0.1
 Flask-WTF==1.2.1
+Flask-RESTx
+pytest
+Flask-Testing
+Flask-JWT-Extended

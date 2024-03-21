@@ -3,24 +3,30 @@ import os
 from flask import Flask, render_template
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
+from flask_jwt_extended import JWTManager
 
 app = Flask(__name__)
 app.debug=True
 app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('SQL_DB', 'sqlite:///pomodoro.db')
 app.config['SECRET_KEY'] = 'secretkey'
+app.config['JWT_SECRET_KEY'] = 'your-secret-key'  # Change this to a random secret key
+jwt = JWTManager(app)
 db = SQLAlchemy(app)
 migrate = Migrate(app, db)
+
 
 from app.views.timer_routes import *
 from app.views.timer_views import *
 from app.views.timer_bp import *
 from app.views.all_routes import *
+from app.views.timer_rest import *
+# from app.views.timer_restmix import *
 
 app.register_blueprint(timer_bp)
 # app.register_blueprint(timer_blueprint)
 
-app.add_url_rule('/', view_func=hello, methods=['GET'])
-app.add_url_rule('/<name>', view_func=hello, methods=['GET'])
+# app.add_url_rule('/', view_func=hello, methods=['GET'])
+# app.add_url_rule('/<name>', view_func=hello, methods=['GET'])
 
 
 timer_view = TimerDataAPI.as_view('timer_api')
