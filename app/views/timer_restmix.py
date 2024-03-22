@@ -2,7 +2,7 @@ from flask import jsonify, request, redirect, render_template, url_for, make_res
 from flask_restx import Resource, Namespace, fields, Api
 from app.models.models import TimerData
 from werkzeug.datastructures import Headers
-from app import app, db
+from app import app
 from app.forms.forms import TimerForm
 
 # Assuming CRUDMixin is defined somewhere above or in a separate module
